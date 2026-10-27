@@ -419,15 +419,7 @@ h1, h2, h3, h4, h5 {
 
 /* Hidden form spam-trap field */
 .form-honeypot {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+  display: none !important;
 }
 
 /* Mobile Nav */
