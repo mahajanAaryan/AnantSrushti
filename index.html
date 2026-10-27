@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Anant Srushti Agro Tourism — Where Infinite Nature Meets the Cosmos. A premium agro-tourism resort in Majgaon, near Pune, Maharashtra. Stargazing, Infinity Pool, Farm-to-Table dining." />
+  <title>Anant Srushti Agro Tourism | Infinite Nature, Infinite Sky</title>
+  <link rel="icon" href="assets/images/logo.png" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <!-- ══ NAVBAR ══ -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/images/logo.png" alt="Anant Srushti Logo" />
+        <div class="nav-logo-text">
+          <span class="nav-logo-name">Anant Srushti</span>
+          <span class="nav-logo-sub">Agro Tourism</span>
+        </div>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="rooms.html">Rooms</a>
+        <a href="amenities.html">Amenities</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <a href="booking.html" class="btn btn-primary btn-sm nav-cta">Book Now</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav -->
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="rooms.html">Rooms &amp; Accommodation</a>
+    <a href="amenities.html">Amenities</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="booking.html" class="btn btn-primary">Book Now</a>
+  </div>
+
+  <!-- ══ HERO ══ -->
+  <section class="hero" id="home">
+    <!-- Star canvas -->
+    <div class="star-canvas" aria-hidden="true"></div>
+
+    <!-- Background: real slider images from the website -->
+    <div class="hero-bg" style="background-image:
+      linear-gradient(to top, rgba(0,0,0,0.98) 0%, rgba(0,0,0,0.68) 30%, rgba(0,0,0,0.42) 55%, rgba(0,0,0,0.82) 100%),
+      url('https://www.anantsrushti.com/img/new_slider/1.jpg');"></div>
+
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          Majgaon, Velhe Taluka, Dist. Pune · Maharashtra
+        </div>
+
+        <h1>Where Infinite Nature<br /><em>Meets the Cosmos</em></h1>
+        <p class="hero-tagline">Anant Srushti Agro Tourism</p>
+
+        <p class="hero-desc">
+          From the heart of Sahyadri's ancient forests to the vast canvas of the starlit sky —
+          step into a world where towering forts, misty valleys, organic harvests, and
+          the entire Milky Way above await you. The nature here is truly infinite.
+        </p>
+
+        <div class="hero-btns">
+          <a href="booking.html" class="btn btn-primary btn-lg">🌿 Book Your Stay</a>
+          <a href="rooms.html"   class="btn btn-outline-white btn-lg">Explore Rooms</a>
+        </div>
+
+        <div class="hero-stats">
+          <div>
+            <span class="hero-stat-val">∞</span>
+            <span class="hero-stat-lab">Nature to Explore</span>
+          </div>
+          <div>
+            <span class="hero-stat-val">360°</span>
+            <span class="hero-stat-lab">Sahyadri Sky Views</span>
+          </div>
+          <div>
+            <span class="hero-stat-val">2 hrs</span>
+            <span class="hero-stat-lab">From Pune City</span>
+          </div>
+          <div>
+            <span class="hero-stat-val">∞</span>
+            <span class="hero-stat-lab">Stars to Discover</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-scroll-hint">
+      <div class="scroll-mouse"></div>
+      <span>Scroll to explore</span>
+    </div>
+  </section>
+
+  <!-- ══ HIGHLIGHTS STRIP ══ -->
+  <section class="highlights">
+    <div class="container">
+      <div class="grid-4 stagger-children">
+        <div class="highlight-card" data-animate>
+          <span class="highlight-icon">🌌</span>
+          <div class="highlight-title">Stargazing &amp; Astro</div>
+          <div class="highlight-text">Dark skies above Sahyadri — witness thousands of stars, planets &amp; the Milky Way</div>
+        </div>
+        <div class="highlight-card" data-animate>
+          <span class="highlight-icon">♾️</span>
+          <div class="highlight-title">Infinity Pool</div>
+          <div class="highlight-text">Swim to the edge of the mountains — Jacuzzi &amp; kids' pool with fort views</div>
+        </div>
+        <div class="highlight-card" data-animate>
+          <span class="highlight-icon">🌿</span>
+          <div class="highlight-title">Farm-to-Table</div>
+          <div class="highlight-text">Rajgad Restaurant — authentic Maharashtrian &amp; Punjabi cuisine, organically grown</div>
+        </div>
+        <div class="highlight-card" data-animate>
+          <span class="highlight-icon">🏕️</span>
+          <div class="highlight-title">Nature Tents</div>
+          <div class="highlight-text">Sleep under the open sky — purpose-built for astrophotography &amp; stargazing</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ ABOUT ══ -->
+  <section class="section" style="background: linear-gradient(180deg, var(--nature-dark) 0%, var(--space-dark) 100%); position:relative; overflow:hidden;">
+    <!-- subtle nebula background -->
+    <div style="position:absolute; inset:0; background: radial-gradient(ellipse at 80% 50%, rgba(45,27,105,0.12), transparent 60%); pointer-events:none;"></div>
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img-wrapper" data-animate="left">
+          <img src="https://www.anantsrushti.com/img/about-us.jpg" alt="Anant Srushti Property" loading="lazy" />
+          <div class="about-badge">
+            <strong>★ 4.8</strong>
+            <span>Guest Rating</span>
+          </div>
+        </div>
+
+        <div data-animate="right">
+          <span class="section-label">Our Story</span>
+          <h2 class="section-title">Where the Forest Floor<br/><span class="grad-text">Meets the Milky Way</span></h2>
+          <div class="divider"></div>
+          <p style="color:var(--text-muted); margin-bottom:1.25rem; line-height:1.9;">
+            Tucked into the Sahyadri range near the historical forts of <strong style="color:var(--nature-glow)">Torna (Prachandgad) and Rajgad</strong>,
+            Anant Srushti is built on a simple philosophy: nature is infinite. Look around you — ancient forests, tumbling waterfalls,
+            organic farms humming with life. Then look up — thousands of stars, nebulae, planets, the full canvas of the cosmos.
+          </p>
+          <p style="color:var(--text-muted); margin-bottom:1.75rem; line-height:1.9;">
+            We've created a space where both dimensions are fully yours to experience. Farm fresh meals, adventure in the wild,
+            a dip in the infinity pool at golden hour — and then, as night falls over the Sahyadris, the real show begins.
+          </p>
+          <div class="about-features">
+            <div class="about-feature"><span class="check">✓</span> Private Seasonal Waterfall</div>
+            <div class="about-feature"><span class="check">✓</span> Dedicated Stargazing Area</div>
+            <div class="about-feature"><span class="check">✓</span> Organic Farm Experience</div>
+            <div class="about-feature"><span class="check">✓</span> Infinity Pool + Jacuzzi</div>
+            <div class="about-feature"><span class="check">✓</span> Fort Trekking – Torna &amp; Rajgad</div>
+            <div class="about-feature"><span class="check">✓</span> BBQ Under the Stars</div>
+            <div class="about-feature"><span class="check">✓</span> Adventure Park &amp; Zip Line</div>
+            <div class="about-feature"><span class="check">✓</span> 100% Organic Farm Meals</div>
+          </div>
+          <div style="margin-top:2rem;">
+            <a href="amenities.html" class="btn btn-nature">Explore All Amenities</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ ROOMS PREVIEW ══ -->
+  <section class="section section-space">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:3rem;">
+        <span class="section-label" data-animate>Accommodation</span>
+        <h2 class="section-title" data-animate>Sleep Beneath <span class="grad-text">the Stars</span></h2>
+        <div class="divider center" data-animate></div>
+        <p class="section-subtitle" style="margin:0 auto;" data-animate>
+          From cozy nature tents designed for astrophotography to luxury suites with panoramic fort views —
+          every stay is a chapter in your cosmic nature story.
+        </p>
+      </div>
+      <div class="grid-3 stagger-children">
+
+        <!-- Tent -->
+        <div class="room-card" data-animate>
+          <div class="room-img-wrap">
+            <img src="https://www.anantsrushti.com/img/new_slider/3.jpg" alt="Nature Tent Stay" loading="lazy" />
+            <span class="room-badge">⭐ Best for Stargazing</span>
+          </div>
+          <div class="room-body">
+            <h3>Nature Tent Stay</h3>
+            <p>Spacious tents with beds, blankets &amp; power points — positioned under clear open skies for an unforgettable astrophotography experience.</p>
+            <div class="room-tags">
+              <span class="room-tag green">Open Sky View</span>
+              <span class="room-tag">Stargazing</span>
+              <span class="room-tag green">BBQ Included</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:1.25rem;">
+              <div>
+                <div class="room-price">₹2,200 <span>/ adult</span></div>
+                <div style="font-size:0.75rem; color:var(--text-muted); margin-top:0.2rem;">Child (5–12): ₹1,200 · Under 5: Free</div>
+              </div>
+              <a href="booking.html" class="btn btn-outline btn-sm">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Luxury Suite -->
+        <div class="room-card" data-animate>
+          <div class="room-img-wrap">
+            <img src="https://www.anantsrushti.com/img/new_slider/2.jpg" alt="Luxury Suite" loading="lazy" />
+            <span class="room-badge" style="background:linear-gradient(135deg,#c8960c,#ffd700); color:#0b0c2a;">✦ Luxury Suite</span>
+          </div>
+          <div class="room-body">
+            <h3>Luxury Suite</h3>
+            <p>Air-conditioned suites with organic linens, panoramic mountain views of Torna &amp; Rajgad, and every modern comfort — nature at arm's reach.</p>
+            <div class="room-tags">
+              <span class="room-tag">Fort View</span>
+              <span class="room-tag green">AC Room</span>
+              <span class="room-tag">Organic Linen</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:1.25rem;">
+              <div>
+                <div class="room-price">₹3,000 <span>/ adult</span></div>
+                <div style="font-size:0.75rem; color:var(--text-muted); margin-top:0.2rem;">Child (5–12): ₹1,700 · Under 5: Free</div>
+              </div>
+              <a href="booking.html" class="btn btn-outline btn-sm">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Family Suite -->
+        <div class="room-card" data-animate>
+          <div class="room-img-wrap">
+            <img src="https://www.anantsrushti.com/img/new_slider/4.jpg" alt="Family Suite" loading="lazy" />
+            <span class="room-badge" style="background:linear-gradient(135deg,#1a4a2e,#4a9e6b);">🌿 Family Suite</span>
+          </div>
+          <div class="room-body">
+            <h3>Family Suite</h3>
+            <p>Spacious family-friendly AC suites designed for groups and families, with dedicated kids spaces, garden access, and fort &amp; valley panoramas.</p>
+            <div class="room-tags">
+              <span class="room-tag green">Family Friendly</span>
+              <span class="room-tag">Valley View</span>
+              <span class="room-tag">AC Room</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:1.25rem;">
+              <div>
+                <div class="room-price">₹3,000 <span>/ adult</span></div>
+                <div style="font-size:0.75rem; color:var(--text-muted); margin-top:0.2rem;">Child (5–12): ₹1,700 · Under 5: Free</div>
+              </div>
+              <a href="booking.html" class="btn btn-outline btn-sm">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="text-center" style="margin-top:2.5rem;">
+        <a href="rooms.html" class="btn btn-outline">View All Packages &amp; Pricing →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ STARGAZING EXPERIENCE STRIP ══ -->
+  <section class="experience-strip" style="background-image: linear-gradient(to top, rgba(6,6,15,0.95) 0%, rgba(45,27,105,0.5) 50%, rgba(6,6,15,0.9) 100%), url('https://www.anantsrushti.com/img/services/gallery11.jpg');">
+    <div class="star-canvas" aria-hidden="true"></div>
+    <div class="overlay"></div>
+    <div class="container text-center" style="position:relative; z-index:2;">
+      <span class="section-label" data-animate>✦ Signature Experience</span>
+      <h2 class="section-title" data-animate style="font-size:clamp(2.2rem,5vw,3.8rem);">The Night Sky<br/><span class="grad-text">Is Your Infinite Canvas</span></h2>
+      <div class="divider center" data-animate></div>
+      <p class="section-subtitle" style="margin: 0 auto 2.5rem; max-width:650px;" data-animate>
+        At Anant Srushti, when the sun dips behind the Sahyadri peaks, the real magic begins.
+        Zero light pollution. Crystal clear Deccan skies. Our dedicated stargazing area lets you
+        witness the Milky Way, meteor showers, planets, and constellations — a sky show
+        nature has been performing for billions of years, waiting for you to look up.
+      </p>
+      <div class="grid-3 stagger-children" style="max-width:900px; margin:0 auto 2.5rem;">
+        <div class="glass-card" style="padding:1.75rem; text-align:center;">
+          <div style="font-size:2.2rem; margin-bottom:0.75rem;">🔭</div>
+          <h4 style="color:var(--white); font-family:'Space Grotesk',sans-serif; margin-bottom:0.4rem;">Astro-Photography</h4>
+          <p style="font-size:0.85rem; color:var(--text-muted);">Long-exposure sessions capturing the Milky Way arc over Sahyadri silhouettes</p>
+        </div>
+        <div class="glass-card" style="padding:1.75rem; text-align:center;">
+          <div style="font-size:2.2rem; margin-bottom:0.75rem;">🌠</div>
+          <h4 style="color:var(--white); font-family:'Space Grotesk',sans-serif; margin-bottom:0.4rem;">Meteor Showers</h4>
+          <p style="font-size:0.85rem; color:var(--text-muted);">Seasonal meteor shower viewing from open lawns — the best natural light show</p>
+        </div>
+        <div class="glass-card" style="padding:1.75rem; text-align:center;">
+          <div style="font-size:2.2rem; margin-bottom:0.75rem;">🔥</div>
+          <h4 style="color:var(--white); font-family:'Space Grotesk',sans-serif; margin-bottom:0.4rem;">BBQ Under Stars</h4>
+          <p style="font-size:0.85rem; color:var(--text-muted);">Bonfire, BBQ, music &amp; dance under the open sky — the perfect cosmic night</p>
+        </div>
+      </div>
+      <a href="booking.html" class="btn btn-gold btn-lg">✦ Reserve a Night Under the Stars</a>
+    </div>
+  </section>
+
+  <!-- ══ GALLERY PREVIEW ══ -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:2.5rem;">
+        <span class="section-label" data-animate>Gallery</span>
+        <h2 class="section-title" data-animate>See the <span class="grad-text">Infinite Beauty</span></h2>
+        <div class="divider center" data-animate></div>
+      </div>
+      <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:1rem; margin-bottom:2rem;">
+        <div style="border-radius:var(--radius); overflow:hidden; border:1px solid var(--border-glow); aspect-ratio:4/3;">
+          <img src="https://www.anantsrushti.com/img/gallery/1t.jpg"  alt="Gallery 1" style="width:100%;height:100%;object-fit:cover;" loading="lazy" />
+        </div>
+        <div style="border-radius:var(--radius); overflow:hidden; border:1px solid var(--border-glow); aspect-ratio:4/3;">
+          <img src="https://www.anantsrushti.com/img/gallery/5t.jpg"  alt="Gallery 2" style="width:100%;height:100%;object-fit:cover;" loading="lazy" />
+        </div>
+        <div style="border-radius:var(--radius); overflow:hidden; border:1px solid var(--border-glow); aspect-ratio:4/3;">
+          <img src="https://www.anantsrushti.com/img/gallery/10t.jpg" alt="Gallery 3" style="width:100%;height:100%;object-fit:cover;" loading="lazy" />
+        </div>
+      </div>
+      <div class="text-center">
+        <a href="gallery.html" class="btn btn-outline">View Full Gallery →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ TESTIMONIALS ══ -->
+  <section class="section" style="background: linear-gradient(180deg, var(--space-mid) 0%, var(--nature-dark) 100%); position:relative; overflow:hidden;">
+    <div style="position:absolute; inset:0; background:radial-gradient(ellipse at 20% 80%, rgba(123,200,122,0.06), transparent 55%); pointer-events:none;"></div>
+    <div class="container">
+      <div class="text-center" style="margin-bottom:3rem;">
+        <span class="section-label" data-animate>Guest Stories</span>
+        <h2 class="section-title" data-animate>Voices from the <span class="grad-text">Stars</span></h2>
+        <div class="divider center" data-animate></div>
+      </div>
+      <div class="grid-3 stagger-children">
+        <div class="testimonial-card" data-animate>
+          <p class="testimonial-text">"The stargazing night was the most breathtaking experience of my life. We could see the Milky Way with our naked eyes — something I never thought possible so close to Pune. The tent was cozy, the BBQ was fantastic, and the sunrise over Rajgad the next morning was pure magic."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">R</div>
+            <div>
+              <div class="testimonial-name">Rahul M.</div>
+              <div class="testimonial-loc">Pune, Maharashtra</div>
+              <div class="testimonial-stars">★★★★★</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card" data-animate>
+          <p class="testimonial-text">"Perfect family getaway! The kids loved the adventure park and the infinity pool. We went during monsoon and the private waterfall inside the resort was absolutely stunning. The food at Rajgad Restaurant — especially the misal and thali — was outstanding. We're coming back!"</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">P</div>
+            <div>
+              <div class="testimonial-name">Priya S.</div>
+              <div class="testimonial-loc">Mumbai, Maharashtra</div>
+              <div class="testimonial-stars">★★★★★</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card" data-animate>
+          <p class="testimonial-text">"I'm a photographer and Anant Srushti is an astro-photographer's dream. Zero light pollution, crisp Sahyadri air, and an incredibly helpful team. The nature tent gave me the perfect vantage point — I captured the best Milky Way shot of my career here. Highly recommend!"</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">A</div>
+            <div>
+              <div class="testimonial-name">Aakash D.</div>
+              <div class="testimonial-loc">Bengaluru, Karnataka</div>
+              <div class="testimonial-stars">★★★★★</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CTA BANNER ══ -->
+  <section class="cta-banner">
+    <div class="star-canvas" aria-hidden="true"></div>
+    <div class="container">
+      <span class="section-label" data-animate>Ready for Your Journey?</span>
+      <h2 class="section-title" data-animate style="font-size:clamp(2rem,4.5vw,3.5rem); max-width:700px; margin:0 auto 1.25rem;">
+        The Forest is Calling.<br/><span class="grad-text">The Stars are Waiting.</span>
+      </h2>
+      <p style="color:var(--text-muted); max-width:540px; margin: 0 auto 2.5rem; font-size:1.05rem;" data-animate>
+        Book your stay at Anant Srushti and experience a universe of nature, adventure, and starlit wonder just 2 hours from Pune.
+      </p>
+      <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;" data-animate>
+        <a href="booking.html" class="btn btn-primary btn-lg">🌿 Book Your Stay</a>
+        <a href="https://wa.me/919822243348" class="wa-btn" target="_blank">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          WhatsApp Us
+        </a>
+      </div>
+      <p style="margin-top:1.5rem; font-family:'Space Grotesk',sans-serif; font-size:0.78rem; letter-spacing:2px; color:var(--text-dim);" data-animate>
+        📍 MAJGAON, VELHE TALUKA, DIST. PUNE – 412212 &nbsp;|&nbsp; 📞 +91 98222 43348
+      </p>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo" style="margin-bottom:1rem; display:inline-flex;">
+            <img src="assets/images/logo.png" alt="Anant Srushti Logo" style="height:50px;" />
+            <div class="nav-logo-text">
+              <span class="nav-logo-name">Anant Srushti</span>
+              <span class="nav-logo-sub">Agro Tourism</span>
+            </div>
+          </a>
+          <p>Where infinite nature meets the cosmos. A premium agro-tourism resort in the heart of Sahyadri, near the historical forts of Torna and Rajgad, Majgaon, Pune.</p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Facebook">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="Instagram">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" fill="var(--space-dark)"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="var(--space-dark)" stroke-width="2"/></svg>
+            </a>
+            <a href="https://wa.me/919822243348" class="social-link" aria-label="WhatsApp" target="_blank">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="rooms.html">Rooms &amp; Suites</a></li>
+            <li><a href="amenities.html">Amenities</a></li>
+            <li><a href="gallery.html">Photo Gallery</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="booking.html">Book Now</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-heading">Experiences</h4>
+          <ul class="footer-links">
+            <li><a href="amenities.html">Stargazing &amp; Astro</a></li>
+            <li><a href="amenities.html">Infinity Pool</a></li>
+            <li><a href="amenities.html">Fort Trekking</a></li>
+            <li><a href="amenities.html">BBQ Under Stars</a></li>
+            <li><a href="amenities.html">Waterfall Visit</a></li>
+            <li><a href="amenities.html">Rajgad Restaurant</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-heading">Contact Us</h4>
+          <div class="footer-contact-item">
+            <span class="icon">📍</span>
+            <span>Majgaon, Velhe Taluka,<br />Dist. Pune – 412212<br />Maharashtra, India</span>
+          </div>
+          <div class="footer-contact-item">
+            <span class="icon">📞</span>
+            <div>
+              <a href="tel:+919822243348">+91 98222 43348</a><br />
+              <a href="tel:+919588429901">+91 95884 29901</a>
+            </div>
+          </div>
+          <div class="footer-contact-item">
+            <span class="icon">✉️</span>
+            <a href="mailto:info@anantsrushti.com">info@anantsrushti.com</a>
+          </div>
+          <div class="footer-contact-item">
+            <span class="icon">🕐</span>
+            <span>Check-in: 12:00 PM<br />Check-out: 11:00 AM</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Anant Srushti Agro Tourism. All rights reserved. | Majgaon, Pune, Maharashtra</p>
+        <p>Crafted with 🌿 &amp; ✦ for nature &amp; cosmos lovers | <a href="mailto:info@anantsrushti.com">info@anantsrushti.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/919822243348" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+    <span class="wa-tooltip">Chat with us!</span>
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  </a>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
