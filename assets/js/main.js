@@ -6,8 +6,12 @@ const hamburger = document.getElementById('hamburger');
 const mobileNav = document.getElementById('mobileNav');
 const scrollHint = document.querySelector('.hero-scroll-hint');
 
+// Paste the deployed Google Apps Script Web App URL here after setup.
+const BOOKING_EMAIL_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwFnkElGI8yNTkY1vz30t6-sRZIHLP23Ukh8minEpJvtzzybImlDmPS0siO8Y8PyCXa4w/exec';
+
 function updateNavbar() {
   if (scrollHint) scrollHint.classList.toggle('is-hidden', window.scrollY > 0);
+  document.body.classList.toggle('floating-icons-hidden', window.scrollY > 0);
   if (!navbar || navbar.classList.contains('solid')) return;
   navbar.classList.toggle('scrolled', window.scrollY > 60);
 }
@@ -121,10 +125,10 @@ function launchShootingStar(container) {
     left:${(Math.random() * 70 + 10).toFixed(1)}%;
     top:${(Math.random() * 45).toFixed(1)}%;
     width:${length}px;
-    animation: shootingStar ${(Math.random() * 0.6 + 0.4).toFixed(2)}s linear forwards;
+    animation: shootingStar ${(Math.random() * 0.4 + 0.8).toFixed(2)}s linear forwards;
   `;
   container.appendChild(s);
-  setTimeout(() => s.remove(), 1200);
+  setTimeout(() => s.remove(), 1500);
 }
 
 /**
@@ -150,34 +154,27 @@ function addNebulaOrbs(container) {
   });
 }
 
-/* Initialize starfields on all .star-canvas elements */
+/* Keep animated stars only in the signature night-sky experience. */
 function initStarfields() {
-  document.querySelectorAll('.star-canvas').forEach(canvas => {
-    const isHero = canvas.closest('.hero') !== null;
-    const count  = isHero ? 220 : 120;
-    createStars(canvas, count);
-    addNebulaOrbs(canvas);
+  const canvas = document.querySelector('.experience-strip .star-canvas');
+  if (!canvas) return;
 
-    // Shooting stars only in hero and experience-strip sections
-    if (isHero || canvas.closest('.experience-strip') || canvas.closest('.cta-banner')) {
-      const shoot = () => {
-        launchShootingStar(canvas);
-        setTimeout(shoot, Math.random() * 5000 + 3000);
-      };
-      setTimeout(shoot, Math.random() * 4000 + 2000);
-    }
-  });
+  createStars(canvas, 120);
+  addNebulaOrbs(canvas);
+  const shoot = () => {
+    launchShootingStar(canvas);
+    setTimeout(shoot, Math.random() * 5000 + 3000);
+  };
+  setTimeout(shoot, Math.random() * 4000 + 2000);
 }
 
-/* ── Hero Parallax (stars + bg) ── */
+/* ── Hero background parallax ── */
 function initParallax() {
   const heroBg     = document.querySelector('.hero-bg');
-  const heroCanvas = document.querySelector('.hero .star-canvas');
   if (!heroBg) return;
   window.addEventListener('scroll', () => {
     const y = window.scrollY;
     heroBg.style.transform = `scale(1.08) translateY(${y * 0.18}px)`;
-    if (heroCanvas) heroCanvas.style.transform = `translateY(${y * 0.06}px)`;
   }, { passive: true });
 }
 
@@ -245,6 +242,34 @@ function initForms() {
       e.preventDefault();
       const btn = form.querySelector('[type="submit"]');
       const orig = btn.textContent;
+      if (form.id === 'bookingInquiryForm') {
+        const status = document.getElementById('bookingFormStatus');
+        if (!BOOKING_EMAIL_ENDPOINT) {
+          status.textContent = 'Online booking email is not connected yet. Please call or WhatsApp us to inquire.';
+          status.style.color = 'var(--text-dim)';
+          return;
+        }
+        btn.textContent = 'Sending ✦';
+        btn.disabled = true;
+        status.textContent = '';
+        const body = new URLSearchParams(new FormData(form));
+        fetch(BOOKING_EMAIL_ENDPOINT, {
+          method: 'POST',
+          mode: 'no-cors',
+          body
+        }).then(() => {
+          status.textContent = 'Your inquiry has been submitted. We’ll contact you by phone or WhatsApp.';
+          status.style.color = 'var(--aurora-teal)';
+          form.reset();
+        }).catch(() => {
+          status.textContent = 'We couldn’t submit your inquiry. Please call or WhatsApp us instead.';
+          status.style.color = '#ff8c8c';
+        }).finally(() => {
+          btn.textContent = orig;
+          btn.disabled = false;
+        });
+        return;
+      }
       btn.textContent = 'Sending ✦';
       btn.disabled = true;
       setTimeout(() => {
@@ -257,6 +282,27 @@ function initForms() {
           form.reset();
         }, 3000);
       }, 1400);
+    });
+  });
+}
+
+function initDatePickers() {
+  const today = new Date();
+  const localToday = [
+    today.getFullYear(),
+    String(today.getMonth() + 1).padStart(2, '0'),
+    String(today.getDate()).padStart(2, '0')
+  ].join('-');
+
+  document.querySelectorAll('#bookingInquiryForm input[type="date"]').forEach(input => {
+    input.min = localToday;
+    input.addEventListener('click', () => {
+      if (typeof input.showPicker !== 'function') return;
+      try {
+        input.showPicker();
+      } catch (_) {
+        // Keep the browser's built-in date input as a fallback.
+      }
     });
   });
 }
@@ -292,5 +338,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initLightbox();
   initGalleryFilter();
   initForms();
+  initDatePickers();
   initFAQ();
 });
