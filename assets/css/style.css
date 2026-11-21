@@ -547,7 +547,7 @@ h1, h2, h3, h4, h5 {
   inset: 0;
   background-size: cover;
   background-position: center center;
-  transform: scale(1.08);
+  transform: scale(1);
   transition: transform 0.1s linear;
 }
 .hero-overlay {

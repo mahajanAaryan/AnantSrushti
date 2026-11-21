@@ -178,7 +178,7 @@ function initParallax() {
       heroBg.style.transform = 'none';
       return;
     }
-    heroBg.style.transform = `scale(1.08) translateY(${window.scrollY * 0.18}px)`;
+    heroBg.style.transform = `scale(1) translateY(${window.scrollY * 0.18}px)`;
   };
   window.addEventListener('scroll', updateHeroPosition, { passive: true });
   window.addEventListener('resize', updateHeroPosition);
