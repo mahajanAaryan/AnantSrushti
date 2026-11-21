@@ -15,9 +15,7 @@ function doPost(e) {
   const children = clean(fields.children, 10) || '0';
   const email = clean(fields.email, 160);
   const requests = clean(fields.requests, 2000);
-  const addons = e && e.parameters && e.parameters.addon
-    ? e.parameters.addon.map(value => clean(value, 100)).join(', ')
-    : 'None';
+  const addons = clean(fields.addons, 500) || 'None';
 
   if (!name || !phone || !checkin || !packageType || !adults) {
     return ContentService.createTextOutput('Missing required booking details');

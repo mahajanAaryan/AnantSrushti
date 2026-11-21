@@ -172,10 +172,17 @@ function initStarfields() {
 function initParallax() {
   const heroBg     = document.querySelector('.hero-bg');
   if (!heroBg) return;
-  window.addEventListener('scroll', () => {
-    const y = window.scrollY;
-    heroBg.style.transform = `scale(1.08) translateY(${y * 0.18}px)`;
-  }, { passive: true });
+  const mobileView = window.matchMedia('(max-width: 768px)');
+  const updateHeroPosition = () => {
+    if (mobileView.matches) {
+      heroBg.style.transform = 'none';
+      return;
+    }
+    heroBg.style.transform = `scale(1.08) translateY(${window.scrollY * 0.18}px)`;
+  };
+  window.addEventListener('scroll', updateHeroPosition, { passive: true });
+  window.addEventListener('resize', updateHeroPosition);
+  updateHeroPosition();
 }
 
 /* ── Gallery Lightbox ── */
@@ -186,12 +193,24 @@ function initLightbox() {
   const closeBtn = lightbox.querySelector('.lightbox-close');
   const prevBtn  = lightbox.querySelector('.lightbox-prev');
   const nextBtn  = lightbox.querySelector('.lightbox-next');
-  const items    = Array.from(document.querySelectorAll('.gallery-item[data-src]'));
+  const items = [
+    ...Array.from(document.querySelectorAll('.gallery-item[data-src]')).map(item => ({
+      element: item,
+      src: item.dataset.src,
+      alt: item.querySelector('img')?.alt || 'Gallery image'
+    })),
+    ...Array.from(document.querySelectorAll('[data-room-gallery-track] .room-gallery-slide img')).map(img => ({
+      element: img,
+      src: img.getAttribute('src'),
+      alt: img.alt || 'Room photo'
+    }))
+  ];
   let current = 0;
 
   function openLightbox(idx) {
     current = idx;
-    lightImg.src = items[current].dataset.src;
+    lightImg.src = items[current].src;
+    lightImg.alt = items[current].alt;
     lightbox.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
@@ -202,10 +221,24 @@ function initLightbox() {
   }
   function navigate(dir) {
     current = (current + dir + items.length) % items.length;
-    lightImg.src = items[current].dataset.src;
+    lightImg.src = items[current].src;
+    lightImg.alt = items[current].alt;
   }
 
-  items.forEach((item, idx) => item.addEventListener('click', () => openLightbox(idx)));
+  items.forEach((item, idx) => {
+    item.element.addEventListener('click', () => openLightbox(idx));
+    if (item.element.matches('.room-gallery-slide img')) {
+      item.element.tabIndex = 0;
+      item.element.setAttribute('role', 'button');
+      item.element.setAttribute('aria-label', 'Open larger view: ' + item.alt);
+      item.element.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          openLightbox(idx);
+        }
+      });
+    }
+  });
   closeBtn?.addEventListener('click', closeLightbox);
   prevBtn?.addEventListener('click',  () => navigate(-1));
   nextBtn?.addEventListener('click',  () => navigate(1));
@@ -218,11 +251,103 @@ function initLightbox() {
   });
 }
 
+/* ── Local image gallery ── */
+function initLocalImageGallery() {
+  const mount = document.getElementById('local-image-gallery');
+  if (!mount) return;
+  const groups = [
+    { key: 'rooms', title: 'Rooms & Terraces', images: [
+      'Images/Room/Mezza1.jpg', 'Images/Room/Mezza2.jpg', 'Images/Room/Side room1.jpg',
+      'Images/Room/side room3.jpg', 'Images/Room/side room4.jpg', 'Images/Room/Side terrace outside view.jpg',
+      'Images/Room/Side terrace1.jpg', 'Images/Room/Side terrace2.jpg', 'Images/side room2.jpg',
+      'Images/middle terrace inside view.jpg', 'Images/Midle terrace inside view 1.jpg',
+      'Images/IMG-20261104-WA0009.jpg', 'Images/IMG-20261104-WA0010.jpg',
+      'Images/IMG-20261104-WA0013.jpg', 'Images/IMG-20261104-WA0014.jpg',
+      'Images/IMG-20261104-WA0015.jpg', 'Images/IMG-20261104-WA0016.jpg',
+      'Images/IMG-20261104-WA0017.jpg',
+      'Images/IMG-20261104-WA0026.jpg',
+      'Images/IMG-20261104-WA0029.jpg'
+    ] },
+    { key: 'tents', title: 'Tent Stay', images: [
+      'Images/Tent/Screenshot 2026-11-04 101359.jpg', 'Images/Tent/WhatsApp Image 2026-10-08 at 3.04.18 PM (1).jpeg',
+      'Images/IMG-20261104-WA0008.jpg', 'Images/IMG-20261105-WA0015.jpg'
+    ] },
+    { key: 'pool', title: 'Infinity Pool', images: [
+      'Images/infinity pool1.jpg', 'Images/infinity pool2.jpg', 'Images/infinity pool3.jpg',
+      'Images/infinity pool4.jpg', 'Images/infiniy pool5.jpg', 'Images/infinity pool6.jpg', 'Images/infinity pool8.jpg',
+      'Images/Space.jpeg', 'Images/IMG-20261104-WA0004.jpg', 'Images/IMG-20261104-WA0006.jpg',
+      'Images/IMG-20261104-WA0019.jpg', 'Images/IMG-20261104-WA0032.jpg',
+      'Images/IMG-20261104-WA0042.jpg', 'Images/IMG-20261104-WA0044.jpg',
+      'Images/IMG-20261105-WA0017.jpg'
+    ] },
+    { key: 'landscape', title: 'Property Views', images: [
+      'Images/Drone pic 1.jpg', 'Images/Drone pic 2.jpg', 'Images/drone pic 3.jpg', 'Images/drone pic 4.jpg',
+      'Images/full building view1.jpg', 'Images/home page 4 way with center.jpg', 'Images/pdium view 1.jpg',
+      'Images/IMG-20261104-WA0021.jpg', 'Images/IMG-20261104-WA0023.jpg',
+      'Images/IMG-20261104-WA0011.jpg', 'Images/IMG-20261104-WA0035.jpg', 'Images/IMG-20261104-WA0040.jpg',
+      'Images/IMG-20261104-WA0041.jpg', 'Images/IMG-20261104-WA0045.jpg',
+      'Images/IMG-20261104-WA0046.jpg', 'Images/IMG-20261104-WA0049.jpg',
+      'Images/IMG-20261105-WA0006.jpg', 'Images/IMG-20261105-WA0013.jpg'
+    ] },
+    { key: 'halls', title: 'Halls & Event Spaces', images: [
+      'Images/Hall1.jpg', 'Images/Hall3.jpg',
+      'Images/IMG-20261104-WA0024.jpg', 'Images/IMG-20261104-WA0030.jpg',
+      'Images/IMG-20261104-WA0034.jpg'
+    ] },
+    { key: 'stargazing', title: 'Stargazing', images: [
+      'Images/IMG-20261104-WA0005.jpg', 'Images/IMG-20261104-WA0031.jpg',
+      'Images/IMG-20261105-WA0007.jpg', 'Images/IMG-20261105-WA0008.jpg', 'Images/IMG-20261105-WA0009.jpg',
+      'Images/IMG-20261105-WA0012.jpg', 'Images/IMG-20261105-WA0021.jpg', 'Images/IMG-20261105-WA0022.jpg'
+    ] },
+    { key: 'activities', title: 'Games & Activities', images: [
+      'Images/badminton tennis.jpg', 'Images/Table Tennis.jpg',
+      'Images/IMG-20261105-WA0018.jpg'
+    ] },
+    { key: 'photos', title: 'Guest Moments & Resort Life', images: [
+      'Images/IMG-20261104-WA0033.jpg', 'Images/IMG-20261104-WA0037.jpg',
+      'Images/IMG-20261104-WA0038.jpg', 'Images/IMG-20261104-WA0043.jpg',
+      'Images/IMG-20261104-WA0047.jpg', 'Images/IMG-20261105-WA0010.jpg',
+      'Images/IMG-20261105-WA0019.jpg'
+    ] }
+  ];
+
+  groups.forEach(group => {
+    const section = document.createElement('section');
+    section.className = 'gallery-local-section';
+    section.dataset.gallerySection = group.key;
+    const heading = document.createElement('h2');
+    heading.className = 'section-title gallery-local-heading';
+    heading.textContent = group.title;
+    section.appendChild(heading);
+    const grid = document.createElement('div');
+    grid.className = 'gallery-grid';
+    group.images.forEach((path, index) => {
+      const src = encodeURI(path);
+      const item = document.createElement('div');
+      item.className = 'gallery-item';
+      item.dataset.src = src;
+      item.dataset.category = group.key;
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = `${group.title} photo ${index + 1}`;
+      img.loading = 'lazy';
+      const overlay = document.createElement('div');
+      overlay.className = 'gallery-overlay';
+      overlay.innerHTML = '<span>View Gallery ✦</span>';
+      item.append(img, overlay);
+      grid.appendChild(item);
+    });
+    section.appendChild(grid);
+    mount.appendChild(section);
+  });
+}
+
 /* ── Gallery Filter ── */
 function initGalleryFilter() {
   const tabs  = document.querySelectorAll('.filter-tab');
   const items = document.querySelectorAll('.gallery-item[data-category]');
   if (!tabs.length) return;
+  const sections = document.querySelectorAll('.gallery-local-section');
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
       tabs.forEach(t => t.classList.remove('active'));
@@ -230,6 +355,9 @@ function initGalleryFilter() {
       const filter = tab.dataset.filter;
       items.forEach(item => {
         item.style.display = (filter === 'all' || item.dataset.category === filter) ? 'block' : 'none';
+      });
+      sections.forEach(section => {
+        section.hidden = filter !== 'all' && section.dataset.gallerySection !== filter;
       });
     });
   });
@@ -305,6 +433,112 @@ function initDatePickers() {
       }
     });
   });
+  const checkinField = document.getElementById('bk-checkin');
+  const checkoutField = document.getElementById('bk-checkout');
+  if (!checkinField || !checkoutField) return;
+  const updateCheckoutValidity = () => {
+    checkoutField.min = checkinField.value || localToday;
+    checkoutField.setCustomValidity(checkoutField.value && checkinField.value && checkoutField.value <= checkinField.value
+      ? 'Check-out must be after check-in.'
+      : '');
+  };
+  checkinField.addEventListener('input', updateCheckoutValidity);
+  checkinField.addEventListener('change', updateCheckoutValidity);
+  checkoutField.addEventListener('input', updateCheckoutValidity);
+  checkoutField.addEventListener('change', updateCheckoutValidity);
+  updateCheckoutValidity();
+}
+
+function initBookingAddons() {
+  const form = document.getElementById('bookingInquiryForm');
+  if (!form) return;
+
+  const packageField = document.getElementById('bk-package');
+  const addonsGroup = document.getElementById('bk-addons');
+  const addonsHidden = document.getElementById('bk-selected-addons');
+  const addonOptions = addonsGroup ? Array.from(addonsGroup.querySelectorAll('.booking-addon-option')) : [];
+
+  function updateAddons() {
+    const eligibleAddons = addonOptions.filter(option => option.dataset.addonPackages.split(',').includes(packageField.value));
+    addonOptions.forEach(option => {
+      const eligible = eligibleAddons.includes(option);
+      option.hidden = !eligible;
+      if (!eligible) option.querySelector('input').checked = false;
+    });
+    addonsGroup.hidden = eligibleAddons.length === 0;
+    const selectedAddons = eligibleAddons.map(option => option.querySelector('input')).filter(input => input.checked);
+    addonsHidden.value = selectedAddons.map(input => `${input.dataset.addonName} — ₹${input.dataset.addonRate}/person/day`).join(', ');
+  }
+
+  packageField.addEventListener('change', updateAddons);
+  addonOptions.forEach(option => option.querySelector('input').addEventListener('change', updateAddons));
+  form.addEventListener('reset', () => requestAnimationFrame(updateAddons));
+  updateAddons();
+}
+
+function initTentSlideshow() {
+  const image = document.querySelector('[data-tent-slideshow]');
+  if (!image) return;
+  const photos = [
+    'Images/Tent/Screenshot%202026-11-04%20101359.jpg',
+    'Images/Tent/WhatsApp%20Image%202026-10-08%20at%203.04.18%20PM%20(1).jpeg'
+  ];
+  photos.slice(1).forEach(src => { const preload = new Image(); preload.src = src; });
+  let current = 0;
+  window.setInterval(() => {
+    if (document.hidden) return;
+    current = (current + 1) % photos.length;
+    image.classList.add('is-fading');
+    window.setTimeout(() => {
+      image.src = photos[current];
+      image.classList.remove('is-fading');
+    }, 450);
+  }, 10000);
+}
+
+function initRoomGallery() {
+  document.querySelectorAll('[data-room-gallery]').forEach(gallery => {
+    const track = gallery.querySelector('[data-room-gallery-track]');
+    const previous = gallery.querySelector('[data-room-gallery-prev]');
+    const next = gallery.querySelector('[data-room-gallery-next]');
+    if (!track || !previous || !next) return;
+
+    const scrollBySlide = direction => {
+      const slide = track.querySelector('.room-gallery-slide');
+      if (!slide) return;
+      const gap = Number.parseFloat(getComputedStyle(track).columnGap) || 0;
+      track.scrollBy({ left: direction * (slide.getBoundingClientRect().width + gap), behavior: 'smooth' });
+    };
+
+    previous.addEventListener('click', () => scrollBySlide(-1));
+    next.addEventListener('click', () => scrollBySlide(1));
+  });
+}
+
+function initReviewCarousels() {
+  document.querySelectorAll('[data-reviews-carousel]').forEach(carousel => {
+    const track = carousel.querySelector('[data-reviews-track]');
+    if (!track) return;
+    const cards = Array.from(track.querySelectorAll('.testimonial-card'));
+    const previous = carousel.querySelector('[data-review-prev]');
+    const next = carousel.querySelector('[data-review-next]');
+    if (!cards.length || !previous || !next) return;
+
+    function updateControls() {
+      previous.disabled = track.scrollLeft <= 2;
+      next.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 2;
+    }
+
+    previous.addEventListener('click', () => {
+      track.scrollBy({ left: -track.clientWidth, behavior: 'smooth' });
+    });
+    next.addEventListener('click', () => {
+      track.scrollBy({ left: track.clientWidth, behavior: 'smooth' });
+    });
+    track.addEventListener('scroll', () => requestAnimationFrame(updateControls), { passive: true });
+    window.addEventListener('resize', updateControls);
+    updateControls();
+  });
 }
 
 /* ── FAQ Accordion ── */
@@ -335,9 +569,14 @@ document.querySelectorAll('.stagger-children > *').forEach((el, i) => {
 document.addEventListener('DOMContentLoaded', () => {
   initStarfields();
   initParallax();
+  initLocalImageGallery();
   initLightbox();
   initGalleryFilter();
   initForms();
   initDatePickers();
+  initBookingAddons();
+  initReviewCarousels();
+  initRoomGallery();
+  initTentSlideshow();
   initFAQ();
 });
